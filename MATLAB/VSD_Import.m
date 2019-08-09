@@ -1,4 +1,4 @@
-clearvars; close all
+clearvars; close all; opengl hardware
 
 addpath('src')
 VSD_addPathes('..\..\..\..\')
@@ -6,6 +6,8 @@ VSD_addPathes('..\..\..\..\')
 %% Settings
 dicomDBpath = 'G:\sciebo\SMIR\VSDFullBody';
 subjectFile='res\VSD_Subjects.xlsx';
+
+visualizeSubjects=1;
 
 % Load subjects & meta data
 if ~exist('res\VSD_Subjects.mat', 'file')
@@ -19,8 +21,13 @@ end
 
 %% Import
 NoS=size(Subjects, 1);
-for s=1:NoS
+for s=1%:NoS
     % Import data
     VSD_importData(Subjects.Number{s}, Subjects.Age(s), Subjects.Sex{s}, dicomDBpath)
+    if visualizeSubjects
+        load(['..\Bones\' Subjects.Number{s} '.mat'], 'B')
+        visualizeMeshes([B(1:5).mesh])
+        medicalViewButtons('RAS')
+    end
 end
 
