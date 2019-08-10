@@ -1,4 +1,8 @@
 function medicalViewButtons(varargin)
+%MEDICALVIEWBUTTONS adds 6 buttons with medical directions to a figure
+%
+% AUTHOR: Maximilian C. M. Fischer
+% 
 
 mode = 'RAS';
 
