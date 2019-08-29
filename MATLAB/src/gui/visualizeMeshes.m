@@ -2,7 +2,9 @@ function varargout = visualizeMeshes(mesh, patchProps)
 %VISUALIZEMESHES plots a struct array of meshes in a new figure
 %
 % AUTHOR: Maximilian C. M. Fischer
-% 
+% COPYRIGHT (C) 2016 - 2019 Maximilian C. M. Fischer
+% LICENSE: EUPL v1.2
+%
 
 if nargin == 1
     patchProps(1).EdgeColor = 'none';
