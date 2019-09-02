@@ -15,7 +15,7 @@ The decimator and remesher are plugins of the software OpenFlipper (www.openflip
 The original segmentations and reconstructions can be found as MHA files in the VSDFullBody database hosted at www.smir.ch.
 
 ## Versions
-v1 contains only the bones of the pelvis of 20 subjects of the VSDFullBody database. 
+v.1.0 contains only the bones of the pelvis of 20 subjects of the VSDFullBody database. 
 Additionally, it contains manual selected pelvic landmarks of five experienced raters.
 
 ## License
