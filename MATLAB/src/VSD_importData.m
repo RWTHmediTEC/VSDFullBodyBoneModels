@@ -63,20 +63,20 @@ if saveSwitch
 end
 
 %% Import pelvis volume
-tempFiles = dir([dbPath '\' subjectString '\' directory '\*.nrrd']);
-volumeIdx=~cellfun(@isempty, regexp({tempFiles.name}, 'WinSinc-1000'));
-if sum(volumeIdx)==1
-    volMatFile=['..\Volumes\' subjectString '_pelvisVolume.mat'];
-    if exist(volMatFile, 'file')
-        load(volMatFile, 'date')
-    else
-        date='';
-    end
-    if ~strcmp(date, tempFiles(volumeIdx).date)
-        pelvisVolume = nhdr_nrrd_read(fullfile(tempFiles(volumeIdx).folder, tempFiles(volumeIdx).name), true);
-        date=tempFiles(volumeIdx).date;
-        save(volMatFile, 'pelvisVolume', 'date')
-    end
-end
+% tempFiles = dir([dbPath '\' subjectString '\' directory '\*.nrrd']);
+% volumeIdx=~cellfun(@isempty, regexp({tempFiles.name}, 'WinSinc-1000'));
+% if sum(volumeIdx)==1
+%     volMatFile=['..\Volumes\' subjectString '_pelvisVolume.mat'];
+%     if exist(volMatFile, 'file')
+%         load(volMatFile, 'date')
+%     else
+%         date='';
+%     end
+%     if ~strcmp(date, tempFiles(volumeIdx).date)
+%         pelvisVolume = nhdr_nrrd_read(fullfile(tempFiles(volumeIdx).folder, tempFiles(volumeIdx).name), true);
+%         date=tempFiles(volumeIdx).date;
+%         save(volMatFile, 'pelvisVolume', 'date')
+%     end
+% end
 
 end
