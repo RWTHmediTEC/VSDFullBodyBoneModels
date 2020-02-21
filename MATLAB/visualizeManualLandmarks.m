@@ -7,7 +7,7 @@ NoL=14; % Number of Landmarks
 NoS=20; % Number of Subjects
 NoT=4; % Number of Trials
 
-files=dir('..\ManualLandmarks\*.mat');
+files=dir('..\ManualLandmarks\Pelvis\*.mat');
 NoR=length(files); % Number of Rater
 Rater=cell(NoR,1);
 for r=1:NoR
@@ -44,8 +44,7 @@ for s=1:NoS
     % Construct pelvis and visualize
     [~, axH, figH] = visualizeMeshes(concatenateMeshes(B(1:3).mesh));
     set(figH,'NumberTitle','off', 'Name',['Subject: ' Subjects.Number{s}])
-    mouseControl3d(axH)
-    medicalViewButtons(axH)
+    anatomicalViewButtons(axH)
     for r=1:NoR
         for t=1:NoT
             for l=1:NoL
@@ -57,3 +56,6 @@ for s=1:NoS
         end
     end
 end
+
+% [List.f, List.p] = matlab.codetools.requiredFilesAndProducts([mfilename '.m']);
+% List.f = List.f'; List.p = List.p';

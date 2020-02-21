@@ -11,7 +11,4 @@ addpath([prefix 'General\Code\optimizeMesh'])
 % https://de.mathworks.com/matlabcentral/fileexchange/66645
 addpath([prefix 'General\Code\#external\#InputOutput\nrrd_read_write_rensonnet'])
 
-% https://de.mathworks.com/matlabcentral/fileexchange/66645
-addpath([prefix 'General\Code\#public'])
-
 end

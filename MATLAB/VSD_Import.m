@@ -1,6 +1,6 @@
 clearvars; close all; opengl hardware
 
-addpath('src')
+addpath(genpath('src'))
 VSD_addPathes('..\..\..\..\')
 
 %% Settings
@@ -32,8 +32,10 @@ for s=1:NoS
     if visualizeSubjects
         load(['..\Bones\' Subjects.Number{s} '.mat'], 'B')
         visualizeMeshes([B(1:5).mesh],patchProps)
-        medicalViewButtons('RAS')
+        anatomicalViewButtons
         set(gcf,'Name',['Subject: ' Subjects.Number{s}])
     end
 end
 
+% [List.f, List.p] = matlab.codetools.requiredFilesAndProducts([mfilename '.m']);
+% List.f = List.f'; List.p = List.p';

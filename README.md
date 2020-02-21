@@ -1,9 +1,9 @@
 # VSDFullBodyBoneModels
 Surface models of bones created from CT datasets of the open source VSDFullBody database hosted at www.smir.ch.
+![z001](https://user-images.githubusercontent.com/43516130/75036561-727e1980-54b2-11ea-8e25-2e563c190ecb.PNG)
 
 ## Usage 
 The Bones directory contains a MATALB MAT file for each subject with the triangle meshes of the bones.
-
 
 ## Segmentation and reconstruction process
 The surface of each pelvis was semi-automatically reconstructed by thresholding followed by a manual post-processing using the software 3D Slicer (www.slicer.org) with the default smoothing settings. 

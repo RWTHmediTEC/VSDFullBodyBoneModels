@@ -1,0 +1,3 @@
+[submodule "MATLAB/src/external/AnatomicalViewTools"]
+	path = MATLAB/src/external/AnatomicalViewTools
+	url = https://github.com/MCM-Fischer/AnatomicalViewTools
