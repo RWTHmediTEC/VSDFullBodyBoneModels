@@ -5,30 +5,22 @@ VSD_addPathes('..\..\..\..\')
 
 %% Settings
 dicomDBpath = 'G:\sciebo\SMIR\VSDFullBody';
-subjectFile='res\VSD_Subjects.xlsx';
+subjectXLSX='res\VSD_Subjects.xlsx';
 
 visualizeSubjects = 1;
 
 % Load subjects & meta data
-if ~exist('res\VSD_Subjects.mat', 'file')
-    [~, ~, metaData] = xlsread(subjectFile);
-    header = metaData(1,:);
-    Subjects=cell2table(metaData(2:end,:),'VariableNames',metaData(1,:));
-    save('res\VSD_Subjects.mat', 'Subjects')
-else
-    load('res\VSD_Subjects.mat', 'Subjects')
-end
+[~, ~, metaData] = xlsread(subjectXLSX);
+header = metaData(1,:);
+Subjects=cell2table(metaData(2:end,:),'VariableNames',metaData(1,:));
+save('res\VSD_Subjects.mat', 'Subjects')
 
 %% Import
-patchProps.EdgeColor = 'none';
-patchProps.FaceColor = [223, 206, 161]/255;
+NoS = size(Subjects, 1);
 patchProps.FaceAlpha = 0.5;
-patchProps.FaceLighting = 'gouraud';
-
-NoS=size(Subjects, 1);
 for s=1:NoS
     % Import data
-    VSD_importData(Subjects.Number{s}, Subjects.Age(s), Subjects.Sex{s}, dicomDBpath)
+    VSD_importData(Subjects(s,:), dicomDBpath)
     if visualizeSubjects
         load(['..\Bones\' Subjects.Number{s} '.mat'], 'B')
         visualizeMeshes([B(1:5).mesh],patchProps)

@@ -1,10 +1,11 @@
-function VSD_importData(subjectString, Age, Sex, dbPath)
+function VSD_importData(Subject, dbPath)
 
 % settings
 saveSwitch=false;
 % names of the bones
 segNames={'Sacrum','Hip_R','Hip_L','Femur_R','Femur_L'};
 
+subjectString = Subject.Number{1};
 boneFilename=['..\Bones\' subjectString '.mat'];
 
 if exist(boneFilename, 'file')
@@ -55,8 +56,11 @@ end
 
 %% Meta data (M)
 % sex, age
-M.sex=Sex;
-M.age=Age;
+M.sex = Subject.Sex{1};
+M.age = Subject.Age(1);
+M.weight = Subject.Weight(1);
+M.height = Subject.Height(1);
+M.notes = Subject.Comment{1};
 
 if saveSwitch
     save(boneFilename,'B','M')
