@@ -16,7 +16,8 @@ The original segmentations and reconstructions can be found as MHA files in the 
 
 ## Versions
 v1.0 (https://doi.org/10.5281/zenodo.3384055) contains only the bones of the pelvis of 20 subjects of the VSDFullBody database. 
-Additionally, it contains manual selected pelvic landmarks of five experienced raters.
+Additionally, it contains manually selected pelvic landmarks of five experienced raters.
+v2.0 additionally contains the femora and manually selected femoral landmarks of five experienced raters.
 
 ## License
 CC BY-NC-SA
