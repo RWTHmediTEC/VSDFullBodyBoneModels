@@ -3,7 +3,7 @@ function [smoothMesh, smoothInfo] = VSD_optimizeMeshWrapper(mesh)
 %
 % AUTHOR: Maximilian C. M. Fischer
 % COPYRIGHT (C) 2020 Maximilian C. M. Fischer
-% LICENSE: EUPL v1.2
+% LICENSE: CC BY-NC-SA
 %
 
 % Settings of OptimizeMesh
