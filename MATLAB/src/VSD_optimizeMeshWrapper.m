@@ -1,4 +1,10 @@
 function [smoothMesh, smoothInfo] = VSD_optimizeMeshWrapper(mesh)
+%VSD_OPTIMIZEMESHWRAPPER optimizes the 3D surface models of the VSD
+%
+% AUTHOR: Maximilian C. M. Fischer
+% COPYRIGHT (C) 2020 Maximilian C. M. Fischer
+% LICENSE: EUPL v1.2
+%
 
 % Settings of OptimizeMesh
 Set.Visualization = 0;

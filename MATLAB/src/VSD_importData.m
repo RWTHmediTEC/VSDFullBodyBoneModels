@@ -1,7 +1,13 @@
 function VSD_importData(Subject, dbPath)
+%VSD_IMPORTDATA imports the data from the VSD
+%
+% AUTHOR: Maximilian C. M. Fischer
+% COPYRIGHT (C) 2020 Maximilian C. M. Fischer
+% LICENSE: EUPL v1.2
+%
 
 % settings
-saveSwitch=false;
+saveSwitch = false;
 % names of the bones
 segNames={'Sacrum','Hip_R','Hip_L','Femur_R','Femur_L'};
 
