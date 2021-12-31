@@ -9,7 +9,10 @@ function VSD_importData(Subject, dbPath)
 % settings
 saveSwitch = false;
 % names of the bones
-segNames={'Sacrum','Hip_R','Hip_L','Femur_R','Femur_L'};
+segNames={...
+    'Sacrum','Hip_R','Hip_L','Femur_R','Femur_L','Patella_R','Patella_L',...
+    'Tibia_R','Tibia_L','Fibula_R','Fibula_L','Talus_R','Talus_L',...
+    'Calcaneus_R','Calcaneus_L','Foot_R','Foot_L','Toes_R','Toes_L'};
 
 subjectString = Subject.Number{1};
 boneFilename=['..\Bones\' subjectString '.mat'];
@@ -27,6 +30,15 @@ else
     M.notes={};
 end
 
+%% Meta data (M)
+% sex, age
+M.sex = Subject.Sex{1};
+M.age = Subject.Age(1);
+M.weight = Subject.Weight(1);
+M.height = Subject.Height(1);
+M.notes = Subject.Comment{1};
+
+%% Bone surface PLY files
 files = dir([dbPath '\' subjectString '\']);
 dirFlags = [files.isdir] & ~cellfun(@isempty, regexp({files.name}, 'Body'));
 if sum(dirFlags) == 1
@@ -36,7 +48,7 @@ else
 end
 
 % Import bones (B)
-tempFiles = dir([dbPath '\' subjectString '\' directory '\*.ply']);
+tempFiles = dir([dbPath '\' subjectString '\' directory '\**\*.ply']);
 if ~isempty(tempFiles)
     for f=1:length(tempFiles)
         % Same order of the segs for each struct
@@ -44,32 +56,44 @@ if ~isempty(tempFiles)
         tempIdx = find(ismember(segNames, tempName));
         if ~isempty(tempIdx)
             % replace if mesh date is different
-            if ~strcmp(B(tempIdx).date, tempFiles(f).date)
+            importFlag = true;
+            if tempIdx <= length(B)
+                importFlag = ~strcmp(B(tempIdx).date, tempFiles(f).date);
+                % copy name of the bone
+                if isempty(B(tempIdx).name)
+                    B(tempIdx).name = segNames(tempIdx);
+                    saveSwitch=true;
+                end
+            end
+            if importFlag
                 disp(['Importing ' subjectString '\' directory '\' tempName '.ply'])
                 % date
                 B(tempIdx).date=tempFiles(f).date;
                 % import mesh
                 [B(tempIdx).mesh.vertices, B(tempIdx).mesh.faces] = ...
                     readPLY(fullfile(tempFiles(f).folder, tempFiles(f).name));
-                % optimze mesh
-                B(tempIdx).mesh = VSD_optimizeMeshWrapper(B(tempIdx).mesh);
+                % import only the outer surface
+                tempMesh = keepOnlyOuterSurface(B(tempIdx).mesh);
+                % keep only components above 25 vertices
+                % tempMesh = tempMesh(arrayfun(@(x) size(x.vertices,1), tempMesh)>25);
+                % optimize mesh
+                for m=1:length(tempMesh)
+                    tempMesh(m) = VSD_optimizeMeshWrapper(tempMesh(m));
+                end
+                B(tempIdx).mesh = tempMesh;
+                if length(B(tempIdx).mesh)>1
+                    warning('Multi-component bone')
+                    B(tempIdx).mesh = concatenateMeshes(B(tempIdx).mesh);
+                end
                 
                 saveSwitch=true;
             end
         end
+        if saveSwitch
+            save(boneFilename,'B','M')
+        end
+        saveSwitch=false;
     end
-end
-
-%% Meta data (M)
-% sex, age
-M.sex = Subject.Sex{1};
-M.age = Subject.Age(1);
-M.weight = Subject.Weight(1);
-M.height = Subject.Height(1);
-M.notes = Subject.Comment{1};
-
-if saveSwitch
-    save(boneFilename,'B','M')
 end
 
 %% Import pelvis volume

@@ -1,4 +1,4 @@
-function [smoothMesh, smoothInfo] = VSD_optimizeMeshWrapper(mesh)
+function [optiMesh, optiInfo] = VSD_optimizeMeshWrapper(mesh)
 %VSD_OPTIMIZEMESHWRAPPER optimizes the 3D surface models of the VSD
 %
 % AUTHOR: Maximilian C. M. Fischer
@@ -8,13 +8,17 @@ function [smoothMesh, smoothInfo] = VSD_optimizeMeshWrapper(mesh)
 
 % Settings of OptimizeMesh
 Set.Visualization = 0;
+Set.Verbose = 0;
 Set.MeshStatistics = 0;
 
 % BIGGEST COMPONENT
-Set.BiggestComponent = 'MaxBoundingBox'; % 'MaxBoundingBox', 'MaxFaces', 'MaxVolume'
+Set.BiggestComponent = 'MaxBoundingBox'; % 'MaxBoundingBox', 'MaxVolume'
+
+% ORIENT OUTWARDS
+Set.OrientOutwards = 1;
 
 % MESHFIX
-% Set.MeshFix.Path = 'C:\Program Files\MeshFix-V2.0\bin64\meshfix.exe';
+Set.MeshFix.Path = 'C:\Program Files\MeshFix-V2.1\bin64\meshfix.exe';
 
 % OPENFLIPPER
 Set.OpenFlipper.Path = 'C:\Program Files\OpenFlipper 3.1\OpenFlipper.exe';
@@ -41,6 +45,6 @@ Set.OpenFlipper.Remesher.Adaptive.Projection = 'false';
 % Set.MeshLab.TaubinSmooth.mu = -0.67;
 % Set.MeshLab.TaubinSmooth.stepSmoothNum = 200;
 
-[smoothMesh, smoothInfo] = optimizeMesh(mesh, Set);
+[optiMesh, optiInfo] = optimizeMesh(mesh, Set);
 
 end

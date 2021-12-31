@@ -4,7 +4,7 @@ addpath(genpath('src'))
 VSD_addPathes('..\..\..\..\')
 
 %% Settings
-dicomDBpath = 'G:\sciebo\SMIR\VSDFullBody';
+dicomDBpath = 'D:\sciebo\SMIR\VSDFullBody';
 subjectXLSX='res\VSD_Subjects.xlsx';
 
 visualizeSubjects = 1;
@@ -23,8 +23,8 @@ for s=1:NoS
     VSD_importData(Subjects(s,:), dicomDBpath)
     if visualizeSubjects
         load(['..\Bones\' Subjects.Number{s} '.mat'], 'B')
-        visualizeMeshes([B(1:5).mesh],patchProps)
-        anatomicalViewButtons
+        visualizeMeshes([B(1:end).mesh],patchProps)
+        anatomicalViewButtons('LPS')
         set(gcf,'Name',['Subject: ' Subjects.Number{s}])
     end
 end
