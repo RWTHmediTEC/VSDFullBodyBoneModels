@@ -1,10 +1,6 @@
 function VSD_addPathes(prefix)
 % Add necessary pathes
 
-% https://github.com/alecjacobson/gptoolbox
-addpath([prefix 'General\Code\#external\#Mesh\gptoolbox\mesh'])
-addpath([prefix 'General\Code\#external\#Mesh\gptoolbox\external'])
-
 % \\sagnix\Programmierung\public\Matlab\OptimizeMesh
 addpath(genpath([prefix 'General\Code\optimizeMesh']))
 

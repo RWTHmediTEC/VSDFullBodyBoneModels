@@ -15,7 +15,7 @@ Set.MeshStatistics = 0;
 Set.BiggestComponent = 'MaxBoundingBox'; % 'MaxBoundingBox', 'MaxVolume'
 
 % ORIENT OUTWARDS
-Set.OrientOutwards = 1;
+Set.OrientOutwards = 0;
 
 % MESHFIX
 Set.MeshFix.Path = 'C:\Program Files\MeshFix-V2.1\bin64\meshfix.exe';

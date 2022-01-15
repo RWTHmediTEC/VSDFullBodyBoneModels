@@ -66,23 +66,25 @@ if ~isempty(tempFiles)
                 end
             end
             if importFlag
-                disp(['Importing ' subjectString '\' directory '\' tempName '.ply'])
+                meshPath = fullfile(tempFiles(f).folder, tempFiles(f).name);
+                disp(['Importing ' meshPath])
                 % date
                 B(tempIdx).date=tempFiles(f).date;
                 % import mesh
-                [B(tempIdx).mesh.vertices, B(tempIdx).mesh.faces] = ...
-                    readPLY(fullfile(tempFiles(f).folder, tempFiles(f).name));
+                tempMesh = readMesh(meshPath);
                 % import only the outer surface
-                tempMesh = keepOnlyOuterSurface(B(tempIdx).mesh);
-                % keep only components above 25 vertices
-                % tempMesh = tempMesh(arrayfun(@(x) size(x.vertices,1), tempMesh)>25);
+                tempMesh = keepOnlyOuterSurface(tempMesh);
+                % remove components below 25 vertices
+                tempMesh = tempMesh(arrayfun(@(x) size(x.vertices,1), tempMesh)>=25);
+                % remove components with a volume below 1 mm³
+                tempMesh = tempMesh(arrayfun(@(x) meshVolume(x), tempMesh)>=1);
                 % optimize mesh
                 for m=1:length(tempMesh)
                     tempMesh(m) = VSD_optimizeMeshWrapper(tempMesh(m));
                 end
                 B(tempIdx).mesh = tempMesh;
                 if length(B(tempIdx).mesh)>1
-                    warning('Multi-component bone')
+                    warning(['Multi-component bone: ' num2str(length(B(tempIdx).mesh)) ' components!'])
                     B(tempIdx).mesh = concatenateMeshes(B(tempIdx).mesh);
                 end
                 
