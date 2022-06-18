@@ -11,9 +11,7 @@ visualizeSubjects = 1;
 
 % Load subjects & meta data
 [~, ~, metaData] = xlsread(subjectXLSX);
-header = metaData(1,:);
 Subjects=cell2table(metaData(2:end,:),'VariableNames',metaData(1,:));
-save('res\VSD_Subjects.mat', 'Subjects')
 
 %% Import
 NoS = size(Subjects, 1);
