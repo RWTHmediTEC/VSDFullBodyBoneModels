@@ -1,7 +1,7 @@
 clearvars; close all;
 
 % Select the subjects for import
-subjects = {'010'; '014'; '015'; '016'; '017'; '019'; ...
+subjects = {'002'; '010'; '014'; '015'; '016'; '017'; '019'; ...
     'z001'; 'z009'; 'z013'; 'z019'; 'z023'; 'z027'; 'z035'; 'z036'; 'z042'; 'z046';...
     'z049'; 'z050'; 'z055'; 'z056'; 'z057'; 'z061'; 'z062'; 'z064'; 'z066'};
 
@@ -15,11 +15,12 @@ subjectData = table(subjects,nan(NoS,1),cell(NoS,1),nan(NoS,1),nan(NoS,1),...
 for s = 1:length(subjects)
     %Find JSON files
     files = dir([dbPath '\' subjects{s} '\**\*.json']);
+    files(cellfun(@(x) contains(x,'.mrk.'), {files.name}))=[];
     
     metaData = cell(length(files),4);
     for f=1:length(files)
         fileName = fullfile(files(f).folder, files(f).name);
-        jsonData = jsondecode(fileread(fileName)); % Using the jsondecode function to parse JSON from string
+        jsonData = jsondecode(fileread(fileName));
         metaData{f,1} = subjects{s};
         metaData{f,2} = jsonData.subjectSnapshot.ageInDays/365;
         metaData{f,3} = jsonData.subjectSnapshot.gender.name;

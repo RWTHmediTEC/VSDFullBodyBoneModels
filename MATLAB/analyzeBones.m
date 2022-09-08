@@ -30,10 +30,15 @@ clear B
 %         NoCC(s,b) = stats.num_connected_components;
 %     end
 % end
-
+% 
 % save('NumberOfConnComp.mat','NoCC')
 
 %% Mesh volume
+% Remove subjects with incomplete skeletal anatomy
+Subjects = Subjects(cellfun(@(x) isempty(strfind(x,'cut off')), Subjects.Comment),:); %#ok<STREMP>
+Subjects = Subjects(cellfun(@(x) isempty(strfind(x,'total knee')), Subjects.Comment),:); %#ok<STREMP>
+Subjects = Subjects(~isnan(Subjects.Weight),:);
+NoS = size(Subjects, 1);
 volume = nan(NoS, NoB);
 for s=1:NoS
     % Import the bones
@@ -45,8 +50,18 @@ for s=1:NoS
 end
 
 cmm3toccm3 = 0.001;
-volumeTable = cell2table(cell(NoB,5), 'VariableNames', {'Bone name', 'Min.', 'Mean', 'Median', 'Max.'});
+volumeTable = cell2table(cell(NoB,13), 'VariableNames', {...
+    'Bone name', 'Min.', 'Mean', 'Median', 'Max.',...
+    'M_Min.', 'M_Mean', 'M_Median', 'M_Max.',...
+    'F_Min.', 'F_Mean', 'F_Median', 'F_Max.'});
+[minIdx, maxIdx] = deal(nan(NoS, 1));
+mIdx = strcmp(Subjects.Sex, 'M');
+assert(sum(mIdx) == 10)
+fIdx = strcmp(Subjects.Sex, 'F');
+assert(sum(fIdx) == 10)
+assert(sum(fIdx & mIdx) == 0)
 for b=1:NoB
+    % All
     volumeTable(b,1) = boneNames(b);
     [minValue, minIdx(b)] = min(volume(:,b)*cmm3toccm3);
     volumeTable{b,2} = {minValue};
@@ -54,9 +69,23 @@ for b=1:NoB
     volumeTable(b,4) = medianStats(volume(:,b)*cmm3toccm3,'% 1.0f','format','short');
     [maxValue, maxIdx(b)] = max(volume(:,b)*cmm3toccm3);
     volumeTable{b,5} = {maxValue};
+    % Male
+    [minValue, minIdx(b)] = min(volume(mIdx,b)*cmm3toccm3);
+    volumeTable{b,6} = {minValue};
+    volumeTable(b,7) = meanStats(volume(mIdx,b)*cmm3toccm3,'% 1.0f','format','short');
+    volumeTable(b,8) = medianStats(volume(mIdx,b)*cmm3toccm3,'% 1.0f','format','short');
+    [maxValue, maxIdx(b)] = max(volume(mIdx,b)*cmm3toccm3);
+    volumeTable{b,9} = {maxValue};
+    % Female
+    [minValue, minIdx(b)] = min(volume(fIdx,b)*cmm3toccm3);
+    volumeTable{b,10} = {minValue};
+    volumeTable(b,11) = meanStats(volume(fIdx,b)*cmm3toccm3,'% 1.0f','format','short');
+    volumeTable(b,12) = medianStats(volume(fIdx,b)*cmm3toccm3,'% 1.0f','format','short');
+    [maxValue, maxIdx(b)] = max(volume(fIdx,b)*cmm3toccm3);
+    volumeTable{b,13} = {maxValue};
 end
 
-writetable(volumeTable, 'volumeResults.xlsx', 'Sheet','Volume', 'Range','B4',...
+writetable(volumeTable, 'volumeResults.xlsx', 'Sheet','Volume', 'Range','B5',...
     'WriteVariableNames',0, 'WriteRowNames',0)
 
 % bph = boxplot(volume,boneNames,'LabelOrientation','inline');
