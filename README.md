@@ -11,13 +11,13 @@ Additionally, it contains manually selected pelvic landmarks of five experienced
 The Bones directory contains a MATALB MAT file for each subject with the triangle meshes of the bones.
 
 ## Segmentation and reconstruction process
-The surface of each pelvis was semi-automatically reconstructed by thresholding followed by a manual post-processing using the software 3D Slicer (www.slicer.org) with the default smoothing settings. 
-If necessary, the pelvic bones were manually segmented at the pubic symphysis and the sacroiliac joints. 
-The reconstructed surfaces were imported into MATLAB using a conservative decimation and remeshing procedure. 
+The surface of each bone was semi-automatically reconstructed by thresholding using 200 Hounsfield units as lower threshold and the maximum Hunsfield unit value present in the volume data as upper threshold.
+The thresholding was followed by a manual post-processing procedure using the software 3D Slicer ([slicer.org](https://www.slicer.org)) with the default smoothing settings.
+If necessary, the bones were manually segmented at the joint spaces. Subsequently, holes in the outer surface of the bones were manually closed.
+The reconstructions were exported as mesh files in the Polygon File Format (PLY) and imported into MATLAB using a conservative decimation and remeshing procedure. 
 The decimator restricted the Hausdorff distance between input and output mesh to 0.05 mm. 
 The adaptive remesher permitted a maximum deviation of 0.05 mm from the input mesh with a minimum edge length of 0.5 mm and a maximal edge length of 100 mm. 
-The decimator and remesher are plugins of the software OpenFlipper (www.openflipper.org).
-The original segmentations and reconstructions can be found as MHA files in the VSDFullBody database hosted at www.smir.ch.
+The decimator and remesher are plugins of the software OpenFlipper ([openflipper.org](https://www.openflipper.org)).
 
 ## License
 CC BY-NC-SA
