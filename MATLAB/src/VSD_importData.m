@@ -15,7 +15,7 @@ segNames={...
     'Calcaneus_R','Calcaneus_L','Tarsals_R','Tarsals_L',...
     'Metatarsals_R','Metatarsals_L','Phalanges_R','Phalanges_L'};
 
-subjectString = Subject.Number{1};
+subjectString = Subject.ID{1};
 boneFilename=['..\Bones\' subjectString '.mat'];
 
 if exist(boneFilename, 'file')

@@ -1,9 +1,9 @@
 clearvars; close all;
 
 % Select the subjects for import
-subjects = {'002'; '010'; '014'; '015'; '016'; '017'; '019'; ...
-    'z001'; 'z009'; 'z013'; 'z019'; 'z023'; 'z027'; 'z035'; 'z036'; 'z042'; 'z046';...
-    'z049'; 'z050'; 'z055'; 'z056'; 'z057'; 'z061'; 'z062'; 'z064'; 'z066'};
+subjects = {'002'; '006'; '010'; '014'; '015'; '016'; '017'; '019'; ...
+    'z001'; 'z004'; 'z009'; 'z013'; 'z019'; 'z023'; 'z027'; 'z035'; 'z036'; 'z042'; ...
+    'z046'; 'z049'; 'z050'; 'z055'; 'z056'; 'z057'; 'z061'; 'z062'; 'z064'; 'z066'};
 
 % Path of the VSD
 dbPath = 'D:\sciebo\SMIR\VSDFullBody';
@@ -13,7 +13,7 @@ NoS = length(subjects);
 subjectData = table(subjects,nan(NoS,1),cell(NoS,1),nan(NoS,1),nan(NoS,1),...
     'VariableNames',{'ID','Age','Sex','Weight','Height'});
 for s = 1:length(subjects)
-    %Find JSON files
+    % Find JSON files
     files = dir([dbPath '\' subjects{s} '\**\*.json']);
     files(cellfun(@(x) contains(x,'.mrk.'), {files.name}))=[];
     

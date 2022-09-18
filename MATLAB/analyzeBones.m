@@ -9,40 +9,55 @@ subjectXLSX = 'res\VSD_Subjects.xlsx';
 Subjects = cell2table(metaData(2:end,:),'VariableNames',metaData(1,:));
 NoS = size(Subjects, 1);
 
-load(['..\Bones\' Subjects.Number{1} '.mat'], 'B')
+load(['..\Bones\' Subjects.ID{1} '.mat'], 'B')
 NoB = length(B);
 boneNames = {B.name};
 clear B
 
 
 %% Mesh sanity checks
-% NoCC = nan(NoS, NoB);
-% for s=1:NoS
-%     % Import the bones
-%     load(['..\Bones\' Subjects.Number{s} '.mat'], 'B')
-%     for b=1:length(B)
-%         stats = statistics(B(b).mesh.vertices,B(b).mesh.faces);
-%         sanityStats = rmfield(stats, {'num_faces', 'num_vertices', 'num_edges', ...
-%             'num_connected_components', 'num_handles', 'euler_characteristic'});
-%         if ~all(full(cell2mat(struct2cell(sanityStats)))==0)
-%             error([Subjects.Number{s} ' (' num2str(s) '): ' B(b).name ' (' num2str(b) ')'])
-%         end
-%         NoCC(s,b) = stats.num_connected_components;
-%     end
-% end
-% 
-% save('NumberOfConnComp.mat','NoCC')
+NoCC = nan(NoS, NoB);
+for s=1:NoS
+    % Import the bones
+    load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
+    for b=1:length(B)
+        stats = statistics(B(b).mesh.vertices, B(b).mesh.faces);
+        sanityStats = rmfield(stats, {'num_faces', 'num_vertices', 'num_edges', ...
+            'num_connected_components', 'num_handles', 'euler_characteristic'});
+        if ~all(full(cell2mat(struct2cell(sanityStats)))==0)
+            error([Subjects.ID{s} ' (' num2str(s) '): ' B(b).name ' (' num2str(b) ')'])
+        end
+        NoCC(s,b) = stats.num_connected_components;
+    end
+end
+
+save('NumberOfConnComp.mat','NoCC')
+
+% Check for intersections of adjacent bones
+NoCC = nan(NoS, NoB);
+for s=1:NoS
+    % Import the bones
+    load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
+    mesh = concatenateMeshes([B(1:end).mesh]);
+    stats = statistics(mesh.vertices, mesh.faces);
+    if stats.num_selfintersecting_pairs ~= 0
+        error([Subjects.ID{s} ' has intersections between adjacent bones!'])
+    end
+end
 
 %% Mesh volume
-% Remove subjects with incomplete skeletal anatomy
-Subjects = Subjects(cellfun(@(x) isempty(strfind(x,'cut off')), Subjects.Comment),:); %#ok<STREMP>
-Subjects = Subjects(cellfun(@(x) isempty(strfind(x,'total knee')), Subjects.Comment),:); %#ok<STREMP>
+% Remove incomplete or inconsistent subjects
+Subjects = Subjects(cellfun(@(x) isempty(strfind(lower(x),'cut off')), Subjects.Comment),:); %#ok<STREMP>
+Subjects = Subjects(cellfun(@(x) isempty(strfind(lower(x),'total knee')), Subjects.Comment),:); %#ok<STREMP>
+Subjects = Subjects(cellfun(@(x) isempty(strfind(lower(x),'female')), Subjects.Comment),:); %#ok<STREMP>
+Subjects = Subjects(cellfun(@(x) isempty(strfind(lower(x),'intraosseous')), Subjects.Comment),:); %#ok<STREMP>
 Subjects = Subjects(~isnan(Subjects.Weight),:);
+% Calculate volume of the bone models
 NoS = size(Subjects, 1);
 volume = nan(NoS, NoB);
 for s=1:NoS
     % Import the bones
-    load(['..\Bones\' Subjects.Number{s} '.mat'], 'B')
+    load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
     for b=1:length(B)
         volume(s,b) = VolumeIntegrate(B(b).mesh.vertices,B(b).mesh.faces);
         % volume(s,b) = sum(arrayfun(@(x) meshVolume(x), splitMesh(B(b).mesh)));
@@ -88,6 +103,7 @@ end
 writetable(volumeTable, 'volumeResults.xlsx', 'Sheet','Volume', 'Range','B5',...
     'WriteVariableNames',0, 'WriteRowNames',0)
 
+% figure('color','w')
 % bph = boxplot(volume,boneNames,'LabelOrientation','inline');
 % set(findobj(get(bph(1), 'parent'), 'type', 'text'), 'interpreter','tex');
 
@@ -95,13 +111,12 @@ writetable(volumeTable, 'volumeResults.xlsx', 'Sheet','Volume', 'Range','B5',...
 NoV = nan(NoS, NoB);
 for s=1:NoS
     % Import the bones
-    load(['..\Bones\' Subjects.Number{s} '.mat'], 'B')
+    load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
     for b=1:length(B)
         NoV(s,b) = size(B(b).mesh.vertices,1);
     end
 end
 
 figure('color','w')
-
 bph = boxplot(NoV,boneNames,'LabelOrientation','inline');
 set(findobj(get(bph(1), 'parent'), 'type', 'text'), 'interpreter','tex');

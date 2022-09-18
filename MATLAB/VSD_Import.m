@@ -16,11 +16,11 @@ Subjects=cell2table(metaData(2:end,:),'VariableNames',metaData(1,:));
 %% Import
 NoS = size(Subjects, 1);
 patchProps.FaceAlpha = 0.5;
-for s=1%:NoS
+for s=1:NoS
     % Import data
     VSD_importData(Subjects(s,:), dicomDBpath)
     if visualizeSubjects
-        load(['..\Bones\' Subjects.Number{s} '.mat'], 'B')
+        load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
         visualizeMeshes([B(1:end).mesh],patchProps)
         anatomicalViewButtons('LPS')
         set(gcf,'Name',['Subject: ' Subjects.Number{s}])
