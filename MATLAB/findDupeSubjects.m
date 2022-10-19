@@ -14,9 +14,9 @@ TFM2 = repmat(struct('APP',[]),NoS,1);
 Sacrum = repmat(struct('vertices',[],'faces',[]),NoS,1);
 for s=1:NoS
     % Import the bones
-    load(['..\Bones\' Subjects.Number{s} '.mat'], 'B')
+    load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
     % Import the transformation to the APP coordinate system
-    load(['D:\Biomechanics\Hip\Code\AcetabularMorphologyAnalysis\data\' Subjects.Number{s} '.mat'], 'TFM2APP')
+    load(['D:\Biomechanics\Hip\Code\AcetabularMorphologyAnalysis\data\' Subjects.ID{s} '.mat'], 'TFM2APP')
     TFM2(s).APP = TFM2APP;
     % Transform the sacrum to the APP coordinate system
     Sacrum(s) = transformPoint3d(splitMesh(...
@@ -46,7 +46,7 @@ outlierCutOff = prctile(rigidRegRMSE(:),25)-1.5*iqr(rigidRegRMSE(:));
 [row,col] = ind2sub(size(rigidRegRMSE),find(rigidRegRMSE<outlierCutOff));
 for d=1:length(row)
     disp([...
-        'Subject ' Subjects.Number{row(d)} ' and ' Subjects.Number{col(d)} ...
+        'Subject ' Subjects.ID{row(d)} ' and ' Subjects.ID{col(d)} ...
         ' are dupes based on a comparison of the sacrum!'])
 end
 

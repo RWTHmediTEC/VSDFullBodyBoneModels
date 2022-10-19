@@ -46,7 +46,7 @@ dirFlags = [files.isdir] & ...
 if sum(dirFlags) == 1
     directory = files(dirFlags).name;
 else
-    error('No subfolder found!')
+    error('No subfolder named ''Body'' or ''Models'' found!')
 end
 
 % Import bones (B)

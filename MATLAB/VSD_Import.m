@@ -23,7 +23,11 @@ for s=1:NoS
         load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
         visualizeMeshes([B(1:end).mesh],patchProps)
         anatomicalViewButtons('LPS')
-        set(gcf,'Name',['Subject: ' Subjects.Number{s}])
+%         view(0,0); axis off tight
+%         set(gcf,'Name',['Subject: ' Subjects.ID{s}])
+%         title(Subjects.ID{s})
+%         export_fig(Subjects.ID{s}, '-tif', '-r300')
+%         close(gcf)
     end
 end
 
