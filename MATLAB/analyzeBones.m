@@ -34,7 +34,6 @@ end
 save('NumberOfConnComp.mat','NoCC')
 
 % Check for intersections of adjacent bones
-NoCC = nan(NoS, NoB);
 for s=1:NoS
     % Import the bones
     load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
@@ -49,8 +48,8 @@ end
 % Remove incomplete or inconsistent subjects
 Subjects = Subjects(cellfun(@(x) isempty(strfind(lower(x),'cut off')), Subjects.Comment),:); %#ok<STREMP>
 Subjects = Subjects(cellfun(@(x) isempty(strfind(lower(x),'total knee')), Subjects.Comment),:); %#ok<STREMP>
-Subjects = Subjects(cellfun(@(x) isempty(strfind(lower(x),'female')), Subjects.Comment),:); %#ok<STREMP>
-Subjects = Subjects(cellfun(@(x) isempty(strfind(lower(x),'intraosseous')), Subjects.Comment),:); %#ok<STREMP>
+Subjects = Subjects(cellfun(@(x) isempty(strfind(lower(x),'incorrectly')), Subjects.Comment),:); %#ok<STREMP>
+Subjects = Subjects(cellfun(@(x) isempty(strfind(lower(x),'conflicting')), Subjects.Comment),:); %#ok<STREMP>
 Subjects = Subjects(~isnan(Subjects.Weight),:);
 % Calculate volume of the bone models
 NoS = size(Subjects, 1);
@@ -107,6 +106,14 @@ writetable(volumeTable, 'volumeResults.xlsx', 'Sheet','Volume', 'Range','B5',...
 % bph = boxplot(volume,boneNames,'LabelOrientation','inline');
 % set(findobj(get(bph(1), 'parent'), 'type', 'text'), 'interpreter','tex');
 
+%% Age, weight, height
+SubjectStats(1,1) = meanStats(Subjects.Age,'% 1.0f','format','short');
+SubjectStats(1,2) = meanStats(Subjects.Weight,'% 1.0f','format','short');
+SubjectStats(1,3) = meanStats(Subjects.Height,'% 1.1f','format','short');
+SubjectStats(2,1) = medianStats(Subjects.Age,'% 1.0f','format','short');
+SubjectStats(2,2) = medianStats(Subjects.Weight,'% 1.0f','format','short');
+SubjectStats(2,3) = medianStats(Subjects.Height,'% 1.1f','format','short');
+
 %% Number of vertices
 NoV = nan(NoS, NoB);
 for s=1:NoS
@@ -117,6 +124,10 @@ for s=1:NoS
     end
 end
 
-figure('color','w')
+figure('color','w','numbertitle','off','name','Number of mesh vertices')
 bph = boxplot(NoV,boneNames,'LabelOrientation','inline');
 set(findobj(get(bph(1), 'parent'), 'type', 'text'), 'interpreter','tex');
+
+
+[List.f, List.p] = matlab.codetools.requiredFilesAndProducts([mfilename '.m']);
+List.f = List.f'; List.p = List.p';

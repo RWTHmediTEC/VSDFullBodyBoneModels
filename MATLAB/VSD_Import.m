@@ -4,8 +4,8 @@ addpath(genpath('src'))
 VSD_addPathes('..\..\..\..\')
 
 %% Settings
-dicomDBpath = 'D:\sciebo\SMIR\VSDFullBody';
-subjectXLSX='res\VSD_Subjects.xlsx';
+dicomDBpath = 'D:\sciebo\SMIR\VSDFullBodyBoneReconstruction';
+subjectXLSX = 'res\VSD_Subjects.xlsx';
 
 visualizeSubjects = 1;
 
