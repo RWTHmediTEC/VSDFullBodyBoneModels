@@ -1,9 +1,9 @@
 function VSD_importData(Subject, dbPath)
-%VSD_IMPORTDATA imports the data from the VSD
+%VSD_IMPORTDATA imports the data from the reconstructions of the VSD
 %
 % AUTHOR: Maximilian C. M. Fischer
 % COPYRIGHT (C) 2022 Maximilian C. M. Fischer
-% LICENSE: CC BY-NC-SA
+% LICENSE: EUPL v1.2
 %
 
 % Settings
@@ -41,17 +41,18 @@ M.notes = Subject.Comment{1};
 
 %% Bone surface PLY files
 files = dir([dbPath '\' subjectString '\']);
-dirFlags = [files.isdir] & ...
-    (~cellfun(@isempty, regexp({files.name}, 'Body')) | ~cellfun(@isempty, regexp({files.name}, 'Models')));
+dirFlags = [files.isdir] &  ~cellfun(@isempty, regexp({files.name}, 'Models'));
 if sum(dirFlags) == 1
     directory = files(dirFlags).name;
 else
-    error('No subfolder named ''Body'' or ''Models'' found!')
+    error('No subfolder named ''Models'' was found!')
 end
 
 % Import bones (B)
 tempFiles = dir([dbPath '\' subjectString '\' directory '\**\*.ply']);
-if ~isempty(tempFiles)
+if isempty(tempFiles)
+    warning(['No PLY files were found in ' dbPath '\' subjectString '\' directory])
+else
     for f=1:length(tempFiles)
         % Same order of the segs for each struct
         tempName = strrep(tempFiles(f).name, '.ply','');
@@ -66,7 +67,7 @@ if ~isempty(tempFiles)
                 meshPath = fullfile(tempFiles(f).folder, tempFiles(f).name);
                 disp(['Importing ' meshPath])
                 % Date
-                B(tempIdx).date=tempFiles(f).date;
+                B(tempIdx).date = tempFiles(f).date;
                 % Import mesh
                 tempMesh = readMesh(meshPath);
                 % Import only the outer surface
