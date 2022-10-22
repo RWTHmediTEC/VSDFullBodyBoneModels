@@ -2,8 +2,8 @@ function meshOut = keepOnlyOuterSurface(meshIn)
 %KEEPONLYOUTERSURFACE preserves only outer surfaces of a mesh
 %
 % AUTHOR: Maximilian C. M. Fischer
-% COPYRIGHT (C) 2021 Maximilian C. M. Fischer
-% LICENSE: CC BY-NC-SA
+% COPYRIGHT (C) 2022 Maximilian C. M. Fischer
+% LICENSE: EUPL v1.2
 %
 
 tempMesh = trimMesh(meshIn.vertices, meshIn.faces);
