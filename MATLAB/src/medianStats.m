@@ -1,4 +1,11 @@
 function statsCell = medianStats(data, varargin)
+%MEDIANSTATS calculates median statistics
+%
+% AUTHOR: Maximilian C. M. Fischer
+% COPYRIGHT (C) 2022 Maximilian C. M. Fischer
+% LICENSE: EUPL v1.2
+%
+
 p = inputParser;
 addRequired(p,'data',@(x) validateattributes(x,{'numeric'},{'ncols', 1}))
 addOptional(p,'fSpec', '% 1.1f',@ischar);

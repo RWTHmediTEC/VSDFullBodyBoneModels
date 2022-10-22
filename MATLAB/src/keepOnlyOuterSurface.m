@@ -1,5 +1,5 @@
 function meshOut = keepOnlyOuterSurface(meshIn)
-%KEEPONLYOUTERSURFACE preserves only outer surfaces of a mesh
+%KEEPONLYOUTERSURFACE preserves only the outer surfaces of a mesh
 %
 % AUTHOR: Maximilian C. M. Fischer
 % COPYRIGHT (C) 2022 Maximilian C. M. Fischer
