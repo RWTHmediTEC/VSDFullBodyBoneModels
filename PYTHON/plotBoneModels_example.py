@@ -2,12 +2,14 @@
 from pathlib import Path
 import scipy.io
 import plotly.graph_objects as go
+import plotly.io
 
 mod_path = Path(__file__).parent
 relativePath = '../Bones/002.mat'
 subjectPath = (mod_path / relativePath).resolve()
 MAT = scipy.io.loadmat(subjectPath)
 
+plotly.io.renderers.default='browser'
 meshColor = 'white'
 lightingEffects = dict(ambient=0.6, diffuse=1, roughness=0.5, specular=0.6, fresnel=2)
 for b in range(0, MAT['B'].size):
