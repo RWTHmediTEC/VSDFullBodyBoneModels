@@ -10,8 +10,7 @@ subjectXLSX = 'res\VSD_Subjects.xlsx';
 visualizeSubjects = 1;
 
 % Load subjects & meta data
-[~, ~, metaData] = xlsread(subjectXLSX);
-Subjects=cell2table(metaData(2:end,:),'VariableNames',metaData(1,:));
+Subjects = readtable(subjectXLSX);
 
 %% Import
 NoS = size(Subjects, 1);
@@ -23,8 +22,8 @@ for s=1:NoS
         load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
         visualizeMeshes([B(1:end).mesh],patchProps)
         anatomicalViewButtons('LPS')
-        axis off tight; view(0,0); 
         set(gcf,'Name',['VSD subject: ' Subjects.ID{s}],'NumberTitle','off')
+%         axis off tight; view(0,0); 
 %         title(Subjects.ID{s})
 %         export_fig(Subjects.ID{s}, '-tif', '-r300')
 %         close(gcf)

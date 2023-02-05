@@ -1,4 +1,4 @@
-function VSD_importData(Subject, dbPath)
+function VSD_importData(Subject, dbPath, varargin)
 %VSD_IMPORTDATA imports the data from the reconstructions of the VSD
 %
 % AUTHOR: Maximilian C. M. Fischer
@@ -6,14 +6,21 @@ function VSD_importData(Subject, dbPath)
 % LICENSE: EUPL v1.2
 %
 
+parser = inputParser;
+addOptional(parser,'segNames', {},@iscell);
+parse(parser, varargin{:});
+segNames = parser.Results.segNames;
+
 % Settings
 saveSwitch = false;
 % Names of the bones
-segNames={...
-    'Sacrum','Hip_R','Hip_L','Femur_R','Femur_L','Patella_R','Patella_L',...
-    'Tibia_R','Tibia_L','Fibula_R','Fibula_L','Talus_R','Talus_L',...
-    'Calcaneus_R','Calcaneus_L','Tarsals_R','Tarsals_L',...
-    'Metatarsals_R','Metatarsals_L','Phalanges_R','Phalanges_L'};
+if isempty(segNames)
+    segNames = {...
+        'Sacrum','Hip_R','Hip_L','Femur_R','Femur_L','Patella_R','Patella_L',...
+        'Tibia_R','Tibia_L','Fibula_R','Fibula_L','Talus_R','Talus_L',...
+        'Calcaneus_R','Calcaneus_L','Tarsals_R','Tarsals_L',...
+        'Metatarsals_R','Metatarsals_L','Phalanges_R','Phalanges_L'};
+end
 
 subjectString = Subject.ID{1};
 boneFilename=['..\Bones\' subjectString '.mat'];
@@ -99,22 +106,5 @@ else
         saveSwitch=false;
     end
 end
-
-%% Import pelvis volume
-% tempFiles = dir([dbPath '\' subjectString '\' directory '\*.nrrd']);
-% volumeIdx=~cellfun(@isempty, regexp({tempFiles.name}, 'WinSinc-1000'));
-% if sum(volumeIdx)==1
-%     volMatFile=['..\Volumes\' subjectString '_pelvisVolume.mat'];
-%     if exist(volMatFile, 'file')
-%         load(volMatFile, 'date')
-%     else
-%         date='';
-%     end
-%     if ~strcmp(date, tempFiles(volumeIdx).date)
-%         pelvisVolume = nhdr_nrrd_read(fullfile(tempFiles(volumeIdx).folder, tempFiles(volumeIdx).name), true);
-%         date=tempFiles(volumeIdx).date;
-%         save(volMatFile, 'pelvisVolume', 'date')
-%     end
-% end
 
 end
