@@ -4,8 +4,7 @@ addpath(genpath('src'))
 
 % Load subjects & meta data
 subjectXLSX = 'res\VSD_Subjects.xlsx';
-[~, ~, metaData] = xlsread(subjectXLSX);
-Subjects = cell2table(metaData(2:end,:),'VariableNames',metaData(1,:));
+Subjects = readtable(subjectXLSX);
 
 %% Import
 NoS = size(Subjects, 1);

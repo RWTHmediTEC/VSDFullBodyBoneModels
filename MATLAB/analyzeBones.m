@@ -5,15 +5,13 @@ VSD_addPathes('..\..\..\..\')
 
 % Load subjects & meta data
 subjectXLSX = 'res\VSD_Subjects.xlsx';
-[~, ~, metaData] = xlsread(subjectXLSX);
-Subjects = cell2table(metaData(2:end,:),'VariableNames',metaData(1,:));
+Subjects = readtable(subjectXLSX);
 NoS = size(Subjects, 1);
 
 load(['..\Bones\' Subjects.ID{1} '.mat'], 'B')
 NoB = length(B);
 boneNames = {B.name};
 clear B
-
 
 %% Mesh sanity checks
 NoCC = nan(NoS, NoB);
@@ -128,6 +126,5 @@ figure('color','w','numbertitle','off','name','Number of mesh vertices')
 bph = boxplot(NoV,boneNames,'LabelOrientation','inline');
 set(findobj(get(bph(1), 'parent'), 'type', 'text'), 'interpreter','tex');
 
-
-[List.f, List.p] = matlab.codetools.requiredFilesAndProducts([mfilename '.m']);
-List.f = List.f'; List.p = List.p';
+% [List.f, List.p] = matlab.codetools.requiredFilesAndProducts([mfilename '.m']);
+% List.f = List.f'; List.p = List.p';
