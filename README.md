@@ -20,4 +20,4 @@ The adaptive remesher permitted a maximum deviation of 0.05 mm from the input me
 The decimator and remesher are plugins of the software OpenFlipper ([openflipper.org](https://www.openflipper.org)).
 
 ## License
-CC BY-NC-SA
+[CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
