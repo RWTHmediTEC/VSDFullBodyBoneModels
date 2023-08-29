@@ -24,8 +24,9 @@ The adaptive remesher permitted a maximum deviation of 0.05 mm from the input me
 The decimator and remesher are plugins of the software OpenFlipper ([openflipper.org](https://www.openflipper.org)).
 
 ## Related data
-A mirror of the full VSDFullBody database as hosted originally by Kistler et al. ([10.2196/jmir.2930](https://doi.org/10.2196/jmir.2930)) at [smir.ch](https://www.smir.ch) is available at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8270365.svg)](https://doi.org/10.5281/zenodo.8270365)
 
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8270365.svg)](https://doi.org/10.5281/zenodo.8270365) Mirror of the full VSDFullBody database as hosted originally by Kistler et al. ([10.2196/jmir.2930](https://doi.org/10.2196/jmir.2930)) at [smir.ch](https://www.smir.ch).
 
 ## License
 - [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) for MAT and XLSX files.
