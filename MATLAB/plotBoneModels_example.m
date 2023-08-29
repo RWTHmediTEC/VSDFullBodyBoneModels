@@ -9,7 +9,10 @@ clearvars; close all; opengl hardware
 
 addpath(genpath('src'))
 
-Subject = '002';
+% Load subjects & meta data
+subjectXLSX = 'res\VSD_Subjects.xlsx';
+Subjects = readtable(subjectXLSX);
+Subject = Subjects.ID{1};
 
 patchProps.FaceAlpha = 0.5;
 load(['..\Bones\' Subject '.mat'], 'B')

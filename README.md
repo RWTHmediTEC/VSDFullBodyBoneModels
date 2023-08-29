@@ -1,23 +1,32 @@
+
 # VSDFullBodyBoneModels
-Surface models of bones created from CT datasets of the open source VSDFullBody database hosted at www.smir.ch.
-![z001](https://user-images.githubusercontent.com/43516130/75036561-727e1980-54b2-11ea-8e25-2e563c190ecb.PNG)
+Surface models of bones of the the lower extremities created from CT datasets of the open access VSDFullBody.
+![z001](https://github.com/MCM-Fischer/VSDFullBodyBoneModels/assets/43516130/86cf5874-99dd-4b57-8b99-dba3c567f089)
 
 ## Releases
+- v3.0 The database contains the bones of the lower extremities of 30 subjects. One duplicate subject (z024) was removed from the database.
+- v2.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4280899.svg)](https://doi.org/10.5281/zenodo.4280899) additionally contains the femora and manually selected femoral landmarks of five experienced raters.
 - v1.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3384055.svg)](https://doi.org/10.5281/zenodo.3384055) contains only the bones of the pelvis of 20 subjects of the VSDFullBody database. 
 Additionally, it contains manually selected pelvic landmarks of five experienced raters.
-- v2.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4280899.svg)](https://doi.org/10.5281/zenodo.4280899) additionally contains the femora and manually selected femoral landmarks of five experienced raters.
 
-## Usage 
-The Bones directory contains a MATALB MAT file for each subject with the triangle meshes of the bones.
+## Usage
+In the Bones folder a MATALB MAT file is stored for each subject containing the triangle meshes of the bones.
+
+Run the MATLAB or Python example script to plot on of the subjects: `plotBoneModels_example.m` or `plotBoneModels_example.py`.
 
 ## Segmentation and reconstruction process
-The surface of each bone was semi-automatically reconstructed by thresholding using 200 Hounsfield units as lower threshold and the maximum Hunsfield unit value present in the volume data as upper threshold.
-The thresholding was followed by a manual post-processing procedure using the software 3D Slicer ([slicer.org](https://www.slicer.org)) with the default smoothing settings.
-If necessary, the bones were manually segmented at the joint spaces. Subsequently, holes in the outer surface of the bones were manually closed.
+The surface of each bone was semi-automatically reconstructed by thresholding using 200 Hounsfield units as the lower threshold and the maximum Hunsfield unit value present in the volume data as the upper threshold.
+The thresholding was followed by a manual post-processing procedure using the software 3D Slicer ([slicer.org](https://www.slicer.org)) with default smoothing settings.
+The bones were manually segmented at the joint spaces if necessary. Subsequently, holes in the outer surface of the bones were manually closed.
 The reconstructions were exported as mesh files in the Polygon File Format (PLY) and imported into MATLAB using a conservative decimation and remeshing procedure. 
 The decimator restricted the Hausdorff distance between input and output mesh to 0.05 mm. 
 The adaptive remesher permitted a maximum deviation of 0.05 mm from the input mesh with a minimum edge length of 0.5 mm and a maximal edge length of 100 mm. 
 The decimator and remesher are plugins of the software OpenFlipper ([openflipper.org](https://www.openflipper.org)).
 
+## Related data
+A mirror of the full VSDFullBody database as hosted originally by Kistler et al.[1](https://doi.org/10.2196/jmir.2930) at [smir.ch](https://www.smir.ch) is available at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8270365.svg)](https://doi.org/10.5281/zenodo.8270365)
+
+
 ## License
-[CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/): MAT and XLSX files.
+[![License: EUPL v1.2](https://img.shields.io/badge/License-EUPL_v1.2-lightgrey.svg)](https://eupl.eu/1.2/en/): MATLAB and Python source code.
