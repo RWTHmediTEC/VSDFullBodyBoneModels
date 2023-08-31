@@ -24,8 +24,8 @@ The adaptive remesher permitted a maximum deviation of 0.05 mm from the input me
 The decimator and remesher are plugins of the software OpenFlipper ([openflipper.org](https://www.openflipper.org)).
 
 ## Related data
--[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8302448.svg)](https://doi.org/10.5281/zenodo.8302448) CT volume data, segmentations, reconstructions and raw PLY mesh files of each subject linked by a project file (MRML scene file) that can be opened with 3D Slicer ([slicer.org](https://www.slicer.org)).
--[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8270364.svg)](https://doi.org/10.5281/zenodo.8270364) Mirror of the full VSDFullBody database as hosted originally by Michael Kistler at [smir.ch](https://www.smir.ch).
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8302448.svg)](https://doi.org/10.5281/zenodo.8302448) CT volume data, segmentations, reconstructions and raw PLY mesh files of each subject linked by a project file (MRML scene file) that can be opened with 3D Slicer ([slicer.org](https://www.slicer.org)).
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8270364.svg)](https://doi.org/10.5281/zenodo.8270364) Mirror of the full VSDFullBody database as hosted originally by Michael Kistler at [smir.ch](https://www.smir.ch).
 
 ## License
 - [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) for MAT and XLSX files.
