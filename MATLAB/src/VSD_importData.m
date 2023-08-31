@@ -2,7 +2,7 @@ function VSD_importData(Subject, dbPath, varargin)
 %VSD_IMPORTDATA imports the data from the reconstructions of the VSD
 %
 % AUTHOR: Maximilian C. M. Fischer
-% COPYRIGHT (C) 2022 Maximilian C. M. Fischer
+% COPYRIGHT (C) 2022-2023 Maximilian C. M. Fischer
 % LICENSE: EUPL v1.2
 %
 

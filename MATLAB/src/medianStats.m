@@ -2,7 +2,7 @@ function statsCell = medianStats(data, varargin)
 %MEDIANSTATS calculates median statistics
 %
 % AUTHOR: Maximilian C. M. Fischer
-% COPYRIGHT (C) 2022 Maximilian C. M. Fischer
+% COPYRIGHT (C) 2022-2023 Maximilian C. M. Fischer
 % LICENSE: EUPL v1.2
 %
 

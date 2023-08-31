@@ -1,8 +1,8 @@
 % VISUALIZEMANUALLANDMARKS visualizes the manually selected landmarks
 %
 % AUTHOR: Maximilian C. M. Fischer
-% COPYRIGHT (C) 2023 Maximilian C. M. Fischer
-% LICENSE: CC BY-NC-SA
+% COPYRIGHT (C) 2020-2023 Maximilian C. M. Fischer
+% LICENSE: EUPL v1.2
 %
 
 clearvars; close all; opengl hardware
