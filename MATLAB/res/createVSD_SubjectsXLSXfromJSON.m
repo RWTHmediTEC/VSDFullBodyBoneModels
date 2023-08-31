@@ -1,3 +1,10 @@
+%CREATEVSD_SUBJECTSXLSXFROMJSON creates a subjects excel file.
+%
+% AUTHOR: Maximilian C. M. Fischer
+% COPYRIGHT (C) 2023 Maximilian C. M. Fischer
+% LICENSE: EUPL v1.2
+%
+
 clearvars; close all;
 
 % Select the subjects for import

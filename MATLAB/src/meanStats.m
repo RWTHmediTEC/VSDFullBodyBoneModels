@@ -1,5 +1,5 @@
 function statsCell = meanStats(data, varargin)
-%MEANSTATS calculates mean statistics
+%MEANSTATS calculates mean statistics.
 %
 % AUTHOR: Maximilian C. M. Fischer
 % COPYRIGHT (C) 2022-2023 Maximilian C. M. Fischer

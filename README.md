@@ -1,7 +1,7 @@
 
 # VSDFullBodyBoneModels
 Surface models of bones of the the lower extremities created from CT datasets of the open access VSDFullBody.
-![z001](https://github.com/MCM-Fischer/VSDFullBodyBoneModels/assets/43516130/86cf5874-99dd-4b57-8b99-dba3c567f089)
+![selection](https://github.com/MCM-Fischer/VSDFullBodyBoneModels/assets/43516130/4f12534c-ff43-4e30-bff0-630a9c234937)
 
 ## Releases
 - v3.0 The database contains the bones of the lower extremities of 30 subjects. One duplicate subject (z024) was removed from the database that was part of previous versions.

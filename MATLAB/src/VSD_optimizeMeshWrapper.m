@@ -1,5 +1,5 @@
 function [optiMesh, optiInfo] = VSD_optimizeMeshWrapper(mesh)
-%VSD_OPTIMIZEMESHWRAPPER optimizes the 3D surface models of the VSD
+%VSD_OPTIMIZEMESHWRAPPER optimizes the 3D surface models of the VSD.
 %
 % AUTHOR: Maximilian C. M. Fischer
 % COPYRIGHT (C) 2022-2023 Maximilian C. M. Fischer

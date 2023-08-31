@@ -1,7 +1,7 @@
-% VISUALIZEMANUALLANDMARKS visualizes the manually selected landmarks
+% VISUALIZEMANUALLANDMARKS visualizes the manually selected landmarks.
 %
 % AUTHOR: Maximilian C. M. Fischer
-% COPYRIGHT (C) 2020-2023 Maximilian C. M. Fischer
+% COPYRIGHT (C) 2019-2023 Maximilian C. M. Fischer
 % LICENSE: EUPL v1.2
 %
 
