@@ -1,3 +1,10 @@
+%FINDDUPLICATESUBJECTS finds duplicate subjects in the database.
+%
+% AUTHOR: Maximilian C. M. Fischer
+% COPYRIGHT (C) 2023 Maximilian C. M. Fischer
+% LICENSE: EUPL v1.2
+%
+
 clearvars; close all; opengl hardware
 
 addpath(genpath('src'))
