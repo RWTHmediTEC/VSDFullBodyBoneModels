@@ -12,7 +12,7 @@ Additionally, it contains manually selected pelvic landmarks of five experienced
 ## Usage
 In the Bones folder a MATALB MAT file is stored for each subject containing the triangle meshes of the bones.
 
-Run the MATLAB or Python example script to plot on of the subjects: `plotBoneModels_example.m` or `plotBoneModels_example.py`.
+Run the MATLAB or Python example script to plot one of the subjects: `plotBoneModels_example.m` or `plotBoneModels_example.py`.
 
 ## Segmentation and reconstruction process
 The surface of each bone was semi-automatically reconstructed by thresholding using 200 Hounsfield units as the lower threshold and the maximum Hunsfield unit value present in the volume data as the upper threshold.
@@ -24,9 +24,8 @@ The adaptive remesher permitted a maximum deviation of 0.05 mm from the input me
 The decimator and remesher are plugins of the software OpenFlipper ([openflipper.org](https://www.openflipper.org)).
 
 ## Related data
-
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8270365.svg)](https://doi.org/10.5281/zenodo.8270365) Mirror of the full VSDFullBody database as hosted originally by Kistler et al. ([10.2196/jmir.2930](https://doi.org/10.2196/jmir.2930)) at [smir.ch](https://www.smir.ch).
+-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8302448.svg)](https://doi.org/10.5281/zenodo.8302448) CT volume data, segmentations, reconstructions and raw PLY mesh files of each subject linked by a project file (MRML scene file) that can be opened with 3D Slicer ([slicer.org](https://www.slicer.org)).
+-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8270364.svg)](https://doi.org/10.5281/zenodo.8270364) Mirror of the full VSDFullBody database as hosted originally by Michael Kistler at [smir.ch](https://www.smir.ch).
 
 ## License
 - [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) for MAT and XLSX files.
