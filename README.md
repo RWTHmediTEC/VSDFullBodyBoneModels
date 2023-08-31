@@ -25,7 +25,7 @@ The decimator and remesher are plugins of the software OpenFlipper ([openflipper
 
 ## Related data
 - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8302448.svg)](https://doi.org/10.5281/zenodo.8302448) CT volume data, segmentations, reconstructions and raw PLY mesh files of each subject linked by a project file (MRML scene file) that can be opened with 3D Slicer ([slicer.org](https://www.slicer.org)).
-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8270364.svg)](https://doi.org/10.5281/zenodo.8270364) Mirror of the full VSDFullBody database as hosted originally by Michael Kistler at [smir.ch](https://www.smir.ch).
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8270364.svg)](https://doi.org/10.5281/zenodo.8270364) Mirror of the full VSDFullBody database as hosted originally by Michael Kistler [smir.ch](https://www.smir.ch).
 
 ## Licenses
 - [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/) for MAT and XLSX files.
@@ -34,5 +34,4 @@ The decimator and remesher are plugins of the software OpenFlipper ([openflipper
 ## Related publications
 - v3.0 was published in: 
 - v2.0 was used in: Fischer, M. C. M. et al. A robust method for automatic identification of femoral landmarks, axes, planes and bone coordinate systems using surface models. Sci. Rep. 10, 20859; [10.1038/s41598-020-77479-z](https://doi.org/10.1038/s41598-020-77479-z) (2020).
-- v1.0 was used in: Fischer, M. C. M. et al. A robust method for automatic identification of landmarks on surface models of the pelvis. Sci. Rep. 9, 13322; [10.1038/s41598-019-49573-4](https://doi.org/10.1038/s41598-019-49573-4) (2019);
- (2019).
+- v1.0 was used in: Fischer, M. C. M. et al. A robust method for automatic identification of landmarks on surface models of the pelvis. Sci. Rep. 9, 13322; [10.1038/s41598-019-49573-4](https://doi.org/10.1038/s41598-019-49573-4) (2019).
