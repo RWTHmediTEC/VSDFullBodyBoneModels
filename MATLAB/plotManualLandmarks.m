@@ -5,7 +5,7 @@
 % LICENSE: EUPL v1.2
 %
 
-clearvars; close all; opengl hardware
+clearvars; close all
 
 addpath(genpath('src'))
 

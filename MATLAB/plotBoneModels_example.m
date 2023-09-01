@@ -5,7 +5,7 @@
 % LICENSE: EUPL v1.2
 %
 
-clearvars; close all; opengl hardware
+clearvars; close all
 
 addpath(genpath('src'))
 
@@ -14,7 +14,7 @@ subjectXLSX = 'res\VSD_Subjects.xlsx';
 Subjects = readtable(subjectXLSX);
 Subject = Subjects.ID{1};
 
-patchProps.FaceAlpha = 0.5;
+patchProps.FaceAlpha = 1;
 load(['..\Bones\' Subject '.mat'], 'B')
 visualizeMeshes([B(1:end).mesh],patchProps)
 anatomicalViewButtons('LPS')

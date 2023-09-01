@@ -5,7 +5,7 @@
 % LICENSE: EUPL v1.2
 %
 
-clearvars; close all; opengl hardware
+clearvars; close all
 
 addpath(genpath('src'))
 VSD_addPathes('..\..\..\..\')
@@ -22,7 +22,7 @@ phantom = readtable(phantomXLSX);
 %% Import
 NoS = size(phantom, 1);
 patchProps.FaceAlpha = 0.5;
-for s=1%:NoS
+for s=1:NoS
     % Import data
     VSD_importData(phantom(s,:), dicomDBpath, {'EuropeanSpinePhantom'})
     if visualizeSubjects
@@ -30,10 +30,6 @@ for s=1%:NoS
         visualizeMeshes([B(1:end).mesh],patchProps)
         anatomicalViewButtons('ASR')
         set(gcf,'Name',['VSD: ' phantom.ID{s}],'NumberTitle','off')
-%         axis off tight; view(0,0); 
-%         title(phantom.ID{s})
-%         export_fig(phantom.ID{s}, '-tif', '-r300')
-%         close(gcf)
     end
 end
 
