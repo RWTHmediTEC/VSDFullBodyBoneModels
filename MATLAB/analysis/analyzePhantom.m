@@ -5,14 +5,14 @@
 % LICENSE: EUPL v1.2
 %
 
-clearvars; close all; opengl hardware
+clearvars; close all
 
-addpath(genpath('src'))
-VSD_addPathes('..\..\..\..\')
+addpath(genpath('..\src'))
+VSD_addPathes('..\..\..\..\..\')
 
 %% Settings
 dicomDBpath = 'D:\sciebo\SMIR\VSDFullBodyBoneReconstruction';
-phantomXLSX = 'res\VSD_Phantom.xlsx';
+phantomXLSX = '..\res\VSD_Phantom.xlsx';
 
 visualizeSubjects = 1;
 
@@ -21,27 +21,27 @@ phantom = readtable(phantomXLSX);
 
 %% Import
 patchProps.FaceAlpha = 0.3;
-load(['..\Bones\' phantom.ID{1} '.mat'], 'B')
+load(['..\..\Bones\' phantom.ID{1} '.mat'], 'B')
 phantomMesh = B(1).mesh;
 visualizeMeshes(phantomMesh,patchProps)
 anatomicalViewButtons('ASR')
 set(gcf,'Name',['VSD phantom: ' phantom.ID{1}],'NumberTitle','off')
 
-phantomAreaFile = 'res/VSD_PhantomAnnotations.mat';
+phantomAreaFile = '..\res\VSD_PhantomAnnotations.mat';
 
 if exist(phantomAreaFile, 'file')
     load(phantomAreaFile,'areas','points')
 else
-areas = {...
-    'LV_Body'; 'LV_SuperiorEndPlate'; 'LV_InferiorEndPlate'; 'LV_RightSpinProcess'; 'LV_LeftSpinProcess';...
-    'MV_Body'; 'MV_SuperiorEndPlate'; 'MV_InferiorEndPlate'; 'MV_RightSpinProcess'; 'MV_LeftSpinProcess';...
-    'HV_Body'; 'HV_SuperiorEndPlate'; 'HV_InferiorEndPlate'; 'HV_RightSpinProcess'; 'HV_LeftSpinProcess';...
-    'PostArch'; 'LV_AntArch'; 'MV_AntArch'; 'HV_AntArch';...
-    'LV_SpinProcessBase'; 'MV_SpinProcessBase'; 'HV_SpinProcessBase'};
-points = {'LV_SpinProcess'; 'MV_SpinProcess'; 'HV_SpinProcess'};
+    areas = {...
+        'LV_Body'; 'LV_SuperiorEndPlate'; 'LV_InferiorEndPlate'; 'LV_RightSpinProcess'; 'LV_LeftSpinProcess';...
+        'MV_Body'; 'MV_SuperiorEndPlate'; 'MV_InferiorEndPlate'; 'MV_RightSpinProcess'; 'MV_LeftSpinProcess';...
+        'HV_Body'; 'HV_SuperiorEndPlate'; 'HV_InferiorEndPlate'; 'HV_RightSpinProcess'; 'HV_LeftSpinProcess';...
+        'PostArch'; 'LV_AntArch'; 'MV_AntArch'; 'HV_AntArch';...
+        'LV_SpinProcessBase'; 'MV_SpinProcessBase'; 'HV_SpinProcessBase'};
+    points = {'LV_SpinProcess'; 'MV_SpinProcess'; 'HV_SpinProcess'};
 end
 
-% % Define areas
+%% Define areas
 % areas = selectFaces(phantomMesh, areas);
 % save(phantomAreaFile,'areas','points')
 % 
@@ -115,7 +115,6 @@ drawEdge([LV_SpinProcess, LV_SpinProcessProj], 'Color', 'k', pointProps, 'LineWi
 drawPlatform(LV_SpinProcessBase, 10);
 resTable{6,2} = distancePoints3d(LV_SpinProcess, LV_SpinProcessProj);
 
-
 disp('--- Medium Vertebra ---')
 % Body diameter
 [MV_BodyVerts, ~] = removeMeshFaces(phantomMesh, ~areas{strcmp(areas(:,1),'MV_Body'),2});
@@ -153,7 +152,6 @@ MV_SpinProcessProj = projPointOnPlane(MV_SpinProcess, MV_SpinProcessBase);
 drawEdge([MV_SpinProcess, MV_SpinProcessProj], 'Color', 'k', pointProps, 'LineWidth',2)
 drawPlatform(MV_SpinProcessBase, 10);
 resTable{6,3} = distancePoints3d(MV_SpinProcess, MV_SpinProcessProj);
-
 
 disp('--- High Vertebra ---')
 % Body diameter

@@ -18,7 +18,7 @@ Run the MATLAB or Python example script to plot one of the subjects: `plotBoneMo
 The surface of each bone was semi-automatically reconstructed by thresholding using 200 Hounsfield units as the lower threshold and the maximum Hunsfield unit value present in the volume data as the upper threshold.
 The thresholding was followed by a manual post-processing procedure using the software 3D Slicer ([slicer.org](https://www.slicer.org)) with default smoothing settings.
 The bones were manually segmented at the joint spaces if necessary. Subsequently, holes in the outer surface of the bones were manually closed.
-The reconstructions were exported as mesh files in the Polygon File Format (PLY) and imported into MATLAB using a conservative decimation and remeshing procedure. 
+The reconstructions were exported as mesh files in the PLY format (see '**[Related data](https://github.com/MCM-Fischer/VSDFullBodyBoneModels#related-data)**') and imported into MATLAB using a conservative decimation and remeshing procedure. 
 The decimator restricted the Hausdorff distance between input and output mesh to 0.05 mm. 
 The adaptive remesher permitted a maximum deviation of 0.05 mm from the input mesh with a minimum edge length of 0.5 mm and a maximal edge length of 100 mm. 
 The decimator and remesher are plugins of the software OpenFlipper ([openflipper.org](https://www.openflipper.org)).
