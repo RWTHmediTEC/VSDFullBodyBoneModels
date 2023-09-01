@@ -1,4 +1,4 @@
-% VISUALIZEMANUALLANDMARKS visualizes the manually selected landmarks.
+% PLOTMANUALLANDMARKS plots the manually selected landmarks.
 %
 % AUTHOR: Maximilian C. M. Fischer
 % COPYRIGHT (C) 2019-2023 Maximilian C. M. Fischer
