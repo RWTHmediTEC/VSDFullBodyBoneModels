@@ -7,10 +7,11 @@
 
 clearvars; close all
 
-addpath(genpath('src'))
+addpath(genpath('..\src'))
+VSD_addPathes('..\..\..\..\..\')
 
 % Load subjects & meta data
-subjectXLSX = 'res\VSD_Subjects.xlsx';
+subjectXLSX = '..\res\VSD_Subjects.xlsx';
 Subjects = readtable(subjectXLSX);
 
 %% Import
@@ -20,7 +21,7 @@ TFM2 = repmat(struct('APP',[]),NoS,1);
 Sacrum = repmat(struct('vertices',[],'faces',[]),NoS,1);
 for s=1:NoS
     % Import the bones
-    load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
+    load(['..\..\Bones\' Subjects.ID{s} '.mat'], 'B')
     % Import the transformation to the APP coordinate system
     load(['D:\Biomechanics\Hip\Code\AcetabularMorphologyAnalysis\data\' Subjects.ID{s} '.mat'], 'TFM2APP')
     TFM2(s).APP = TFM2APP;

@@ -33,5 +33,5 @@ The decimator and remesher are plugins of the software OpenFlipper ([openflipper
 
 ## Related publications
 - v3.0 was published in: 
-- v2.0 was used in: Fischer, M. C. M. et al. A robust method for automatic identification of femoral landmarks, axes, planes and bone coordinate systems using surface models. Sci. Rep. 10, 20859; [10.1038/s41598-020-77479-z](https://doi.org/10.1038/s41598-020-77479-z) (2020).
-- v1.0 was used in: Fischer, M. C. M. et al. A robust method for automatic identification of landmarks on surface models of the pelvis. Sci. Rep. 9, 13322; [10.1038/s41598-019-49573-4](https://doi.org/10.1038/s41598-019-49573-4) (2019).
+- v2.0 was used in: Fischer, M. C. M. *et al.* A robust method for automatic identification of femoral landmarks, axes, planes and bone coordinate systems using surface models. *Sci. Rep.* **10**, 20859; [10.1038/s41598-020-77479-z](https://doi.org/10.1038/s41598-020-77479-z) (2020).
+- v1.0 was used in: Fischer, M. C. M. *et al.* A robust method for automatic identification of landmarks on surface models of the pelvis. *Sci. Rep.* **9**, 13322; [10.1038/s41598-019-49573-4](https://doi.org/10.1038/s41598-019-49573-4) (2019).
