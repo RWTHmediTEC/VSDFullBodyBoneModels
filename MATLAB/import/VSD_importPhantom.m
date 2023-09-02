@@ -7,12 +7,12 @@
 
 clearvars; close all
 
-addpath(genpath('src'))
-VSD_addPathes('..\..\..\..\')
+addpath(genpath('..\src'))
+VSD_addPathes('..\..\..\..\..\')
 
 %% Settings
 dicomDBpath = 'D:\sciebo\SMIR\VSDFullBodyBoneReconstruction';
-phantomXLSX = 'res\VSD_Phantom.xlsx';
+phantomXLSX = '..\res\VSD_Phantom.xlsx';
 
 visualizeSubjects = 1;
 
@@ -26,7 +26,7 @@ for s=1:NoS
     % Import data
     VSD_importData(phantom(s,:), dicomDBpath, {'EuropeanSpinePhantom'})
     if visualizeSubjects
-        load(['..\Bones\' phantom.ID{s} '.mat'], 'B')
+        load(['..\..\Bones\' phantom.ID{s} '.mat'], 'B')
         visualizeMeshes([B(1:end).mesh],patchProps)
         anatomicalViewButtons('ASR')
         set(gcf,'Name',['VSD: ' phantom.ID{s}],'NumberTitle','off')

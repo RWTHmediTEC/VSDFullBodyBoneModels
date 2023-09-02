@@ -23,7 +23,7 @@ if isempty(segNames)
 end
 
 subjectString = Subject.ID{1};
-boneFilename=['..\Bones\' subjectString '.mat'];
+boneFilename=['..\..\Bones\' subjectString '.mat'];
 
 if exist(boneFilename, 'file')
     % Check for already existing data

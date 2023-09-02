@@ -5,14 +5,14 @@
 % LICENSE: EUPL v1.2
 %
 
-clearvars; close all; opengl hardware
+clearvars; close all
 
-addpath(genpath('src'))
-VSD_addPathes('..\..\..\..\')
+addpath(genpath('..\src'))
+VSD_addPathes('..\..\..\..\..\')
 
 %% Settings
 dicomDBpath = 'D:\sciebo\SMIR\VSDFullBodyBoneReconstruction';
-subjectXLSX = 'res\VSD_Subjects.xlsx';
+subjectXLSX = '..\res\VSD_Subjects.xlsx';
 
 visualizeSubjects = 1;
 
@@ -26,7 +26,7 @@ for s=1:NoS
     % Import data
     VSD_importData(Subjects(s,:), dicomDBpath)
     if visualizeSubjects
-        load(['..\Bones\' Subjects.ID{s} '.mat'], 'B')
+        load(['..\..\Bones\' Subjects.ID{s} '.mat'], 'B')
         visualizeMeshes([B(1:end).mesh],patchProps)
         anatomicalViewButtons('LPS')
         set(gcf,'Name',['VSD subject: ' Subjects.ID{s}],'NumberTitle','off')
