@@ -4,7 +4,7 @@ Surface models of bones of the the lower extremities created from CT datasets of
 ![subject-selection](https://github.com/MCM-Fischer/VSDFullBodyBoneModels/assets/43516130/b1e706f4-8b43-42d6-b249-1633aaa28381)
 
 ## Releases
-- v3.0 The database contains the bones of the lower extremities of 30 subjects. One duplicate subject (z024) was removed from the database that was part of the previous versions.
+- v3.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8316730.svg)](https://doi.org/10.5281/zenodo.8316730) The database contains the bones of the lower extremities of 30 subjects. One duplicate subject (z024) was removed from the database that was part of the previous versions.
 - v2.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4280899.svg)](https://doi.org/10.5281/zenodo.4280899) additionally contains the femora and manually selected femoral landmarks of five experienced raters.
 - v1.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3384055.svg)](https://doi.org/10.5281/zenodo.3384055) contains only the bones of the pelvis of 20 subjects of the VSDFullBody database. 
 Additionally, it contains manually selected pelvic landmarks of five experienced raters.
