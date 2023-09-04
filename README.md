@@ -1,6 +1,6 @@
 
 # VSDFullBodyBoneModels
-Surface models of bones of the the lower extremities created from CT datasets of the open access VSDFullBody.
+3D surface models of the bones of the lower body created from CT datasets of the open access VSDFullBody collection.
 ![subject-selection](https://github.com/MCM-Fischer/VSDFullBodyBoneModels/assets/43516130/b1e706f4-8b43-42d6-b249-1633aaa28381)
 
 ## Releases
@@ -32,6 +32,5 @@ The decimator and remesher are plugins of the software OpenFlipper ([openflipper
 - [![License: EUPL v1.2](https://img.shields.io/badge/License-EUPL_v1.2-lightgrey.svg)](https://eupl.eu/1.2/en/) for MATLAB and Python source code.
 
 ## Related publications
-- v3.0 was published in: 
 - v2.0 was used in: Fischer, M. C. M. *et al.* A robust method for automatic identification of femoral landmarks, axes, planes and bone coordinate systems using surface models. *Sci. Rep.* **10**, 20859; [10.1038/s41598-020-77479-z](https://doi.org/10.1038/s41598-020-77479-z) (2020).
 - v1.0 was used in: Fischer, M. C. M. *et al.* A robust method for automatic identification of landmarks on surface models of the pelvis. *Sci. Rep.* **9**, 13322; [10.1038/s41598-019-49573-4](https://doi.org/10.1038/s41598-019-49573-4) (2019).
