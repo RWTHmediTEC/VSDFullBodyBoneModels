@@ -11,7 +11,7 @@ Additionally, it contains manually selected pelvic landmarks of five experienced
 
 ## Usage
 In the Bones folder a MATALB MAT file is stored for each subject containing the triangle meshes of the bones.
-
+Clone with the recursive option to get the submodules.
 Run the MATLAB or Python example script to plot one of the subjects: `plotBoneModels_example.m` or `plotBoneModels_example.py`.
 
 ## Segmentation and reconstruction process
