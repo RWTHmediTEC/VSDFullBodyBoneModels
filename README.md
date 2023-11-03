@@ -4,7 +4,7 @@
 
 ## How to cite
 ### Publication
-Fischer, M. C. M. Database of segmentations and surface models of bones of the entire lower body created from cadaver CT scans. *Sci. Data* **10**, 763; [10.1038/s41597-023-02669-z](https://doi.org/10.1038/s41597-023-02669-z) (2023).
+Fischer, M. C. M. Database of segmentations and surface models of bones of the entire lower body created from cadaver CT scans. *Sci. Data* **10**, 763; [![10.1038/s41597-023-02669-z](https://img.shields.io/badge/DOI-10.1038/s41597--023--02669--z-green.svg)](https://doi.org/10.1038/s41597-023-02669-z) (2023).
 
 ### Releases
 - v3.0 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8316730.svg)](https://doi.org/10.5281/zenodo.8316730) The database contains the bones of the lower extremities of 30 subjects. One duplicate subject (z024) was removed from the database that was part of the previous versions.
@@ -34,5 +34,5 @@ The decimator and remesher are plugins of the software OpenFlipper ([openflipper
 - [![License: EUPL v1.2](https://img.shields.io/badge/License-EUPL_v1.2-lightgrey.svg)](https://eupl.eu/1.2/en/) for MATLAB and Python source code.
 
 ## Related publications
-- v2.0 was used in: Fischer, M. C. M. *et al.* A robust method for automatic identification of femoral landmarks, axes, planes and bone coordinate systems using surface models. *Sci. Rep.* **10**, 20859; [10.1038/s41598-020-77479-z](https://doi.org/10.1038/s41598-020-77479-z) (2020).
-- v1.0 was used in: Fischer, M. C. M. *et al.* A robust method for automatic identification of landmarks on surface models of the pelvis. *Sci. Rep.* **9**, 13322; [10.1038/s41598-019-49573-4](https://doi.org/10.1038/s41598-019-49573-4) (2019).
+- v2.0 was used in: Fischer, M. C. M. *et al.* A robust method for automatic identification of femoral landmarks, axes, planes and bone coordinate systems using surface models. *Sci. Rep.* **10**, 20859; [![10.1038/s41598-020-77479-z](https://img.shields.io/badge/DOI-10.1038/s41598--020--77479--z-green.svg)](https://doi.org/10.1038/s41598-020-77479-z) (2020).
+- v1.0 was used in: Fischer, M. C. M. *et al.* A robust method for automatic identification of landmarks on surface models of the pelvis. *Sci. Rep.* **9**, 13322; [![10.1038/s41598-019-49573-4](https://img.shields.io/badge/DOI-10.1038/s41598--019--49573--4-green.svg)](https://doi.org/10.1038/s41598-019-49573-4) (2019).
