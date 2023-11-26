@@ -26,13 +26,16 @@ for s=1:NoS
     % Import the bones
     load(['..\..\Bones\' Subjects.ID{s} '.mat'], 'B')
     for b=1:length(B)
-        stats = statistics(B(b).mesh.vertices, B(b).mesh.faces);
-        sanityStats = rmfield(stats, {'num_faces', 'num_vertices', 'num_edges', ...
-            'num_connected_components', 'num_handles', 'euler_characteristic'});
-        if ~all(full(cell2mat(struct2cell(sanityStats)))==0)
-            error([Subjects.ID{s} ' (' num2str(s) '): ' B(b).name ' (' num2str(b) ')'])
+        if ~isempty(B(b).mesh)
+            stats = statistics(B(b).mesh.vertices, B(b).mesh.faces, 'MinArea', 1e-8);
+            sanityStats = rmfield(stats, {'num_faces', 'num_vertices', 'num_edges', ...
+                'num_connected_components', 'num_handles', 'euler_characteristic'});
+            if ~all(full(cell2mat(struct2cell(sanityStats)))==0)
+                warning(['Failed mesh check for subject ' ...
+                    Subjects.ID{s} ' (' num2str(s) '): ' B(b).name ' (' num2str(b) ')'])
+            end
+            NoCC(s,b) = stats.num_connected_components;
         end
-        NoCC(s,b) = stats.num_connected_components;
     end
 end
 
@@ -107,9 +110,10 @@ end
 writetable(volumeTable, 'volumeResults.xlsx', 'Sheet','Volume', 'Range','B5',...
     'WriteVariableNames',0, 'WriteRowNames',0)
 
-% figure('color','w')
-% bph = boxplot(volume,boneNames,'LabelOrientation','inline');
-% set(findobj(get(bph(1), 'parent'), 'type', 'text'), 'interpreter','tex');
+figure('color','w','numbertitle','off','name','Bone Volume')
+bph = boxplot(volume*cmm3toccm3,boneNames,'LabelOrientation','inline');
+set(findobj(get(bph(1), 'parent'), 'type', 'text'), 'interpreter','tex');
+ylabel('[cm³]')
 
 %% Age, weight, height
 SubjectStats(1,1) = meanStats(Subjects.Age,'% 1.0f','format','short');

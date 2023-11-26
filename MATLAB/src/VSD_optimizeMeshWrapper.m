@@ -28,8 +28,8 @@ Set.OpenFlipper.Decimater.distance = 0.05; % Max. Hausdorff dist. between in- & 
 Set.OpenFlipper.Remesher.Adaptive.Error = 0.05; % Max. deviation from the input mesh
 Set.OpenFlipper.Remesher.Adaptive.MinEdgeLength = 0.5; % Min. edge length
 Set.OpenFlipper.Remesher.Adaptive.MaxEdgeLength = 100; % Max. edge length
-Set.OpenFlipper.Remesher.Adaptive.Iterations = 5; % No. of iterations
-Set.OpenFlipper.Remesher.Adaptive.Projection = 'false';
+Set.OpenFlipper.Remesher.Adaptive.Iterations = 10; % No. of iterations
+Set.OpenFlipper.Remesher.Adaptive.Projection = 'true';
 
 [optiMesh, optiInfo] = optimizeMesh(mesh, Set);
 

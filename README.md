@@ -22,7 +22,7 @@ The thresholding was followed by a manual post-processing procedure using the so
 The bones were manually segmented at the joint spaces if necessary. Subsequently, holes in the outer surface of the bones were manually closed.
 The reconstructions were exported as mesh files in the PLY format (see '**[Related data](https://github.com/MCM-Fischer/VSDFullBodyBoneModels#related-data)**') and imported into MATLAB using a conservative decimation and remeshing procedure. 
 The decimator restricted the Hausdorff distance between input and output mesh to 0.05 mm. 
-The adaptive remesher permitted a maximum deviation of 0.05 mm from the input mesh with a minimum edge length of 0.5 mm and a maximal edge length of 100 mm. 
+The adaptive remesher permitted a maximum deviation of 0.05 mm from the input mesh with a minimum edge length of 0.5 mm and a maximal edge length of 100 mm. Number of iterations was set to 10 and back-projection enabled.
 The decimator and remesher are plugins of the software OpenFlipper ([openflipper.org](https://www.openflipper.org)).
 
 ## Related data
